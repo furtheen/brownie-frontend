@@ -1575,6 +1575,23 @@
         products = DEFAULT_PRODUCTS;
         renderMenu();
       }
+      await fetchCart();
+    }
+
+    async function fetchCart() {
+      if (!currentUser) {
+        cart = [];
+        return;
+      }
+      try {
+        const res = await fetch(`${API_BASE}/Cart/${currentUser.id}`);
+        if (res.ok) {
+          cart = await res.json();
+          updateCartBadge();
+        }
+      } catch (e) {
+        console.error('Failed to fetch cart', e);
+      }
     }
 
     // ─── SAVE ─────────────────────────────────────────────────
@@ -1753,17 +1770,35 @@
     }
 
     // ─── CART ─────────────────────────────────────────────────
-    function addToCart(id) {
+    async function addToCart(id) {
       if (!currentUser) { showToast('Please login first 👆', 'error'); openAuth('login'); return; }
       const prod = products.find(p => p.id === id);
       if (!prod || !prod.available) return;
       const qty = quantities[id] || 1;
       const existing = cart.find(i => i.id === id);
+      let newQty = qty;
       if (existing) {
-        existing.qty = Math.min(10, existing.qty + qty);
-      } else {
-        cart.push({ id, name: prod.name, emoji: prod.emoji, price: prod.price, qty });
+        newQty = Math.min(10, existing.qty + qty);
       }
+      
+      try {
+        const res = await fetch(`${API_BASE}/Cart`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ userId: currentUser.id, brownieId: id, quantity: newQty })
+        });
+        if (!res.ok) throw new Error('API saving failed');
+      } catch (e) {
+         showToast('Failed to save to server!', 'error');
+         return;
+      }
+
+      if (existing) {
+        existing.qty = newQty;
+      } else {
+        cart.push({ id, name: prod.name, emoji: prod.emoji, price: prod.price, qty: newQty });
+      }
+      
       save(); updateCartBadge();
       showToast(`🍫 ${prod.name} added to cart!`, 'success');
     }
@@ -1776,7 +1811,12 @@
       openCheckout([{ id, name: prod.name, emoji: prod.emoji, price: prod.price, qty }]);
     }
 
-    function removeFromCart(id) {
+    async function removeFromCart(id) {
+      if (currentUser) {
+        try {
+          await fetch(`${API_BASE}/Cart/${currentUser.id}/${id}`, { method: 'DELETE' });
+        } catch(e) {}
+      }
       cart = cart.filter(i => i.id !== id);
       save(); updateCartBadge(); renderCart();
     }
@@ -1987,7 +2027,7 @@
       }
     }
 
-    function processOrder(orderId, items, amount, name, phone, addr, status, paymentId = '') {
+    async function processOrder(orderId, items, amount, name, phone, addr, status, paymentId = '') {
       const order = {
         id: orderId,
         customer: name,
@@ -2003,6 +2043,11 @@
       cart = [];
       save();
       updateCartBadge();
+      
+      if (currentUser) {
+        try { await fetch(`${API_BASE}/Cart/${currentUser.id}/clear`, { method: 'DELETE' }); } catch (e) {}
+      }
+
       sendNotifications(order);
       showOrderSuccess(order);
     }
@@ -2048,7 +2093,7 @@
       document.getElementById('signupTab').classList.toggle('active', tab === 'signup');
     }
 
-    function doLogin() {
+    async function doLogin() {
       const id = document.getElementById('loginId').value.trim();
       const pass = document.getElementById('loginPass').value;
       if (!id || !pass) { showToast('Please fill all fields', 'error'); return; }
@@ -2061,12 +2106,13 @@
       currentUser = user;
       save();
       closeModal('authModal');
+      await fetchCart();
       updateNav();
       renderMenu();
       showToast(`Welcome back, ${user.firstName}! 🍫`, 'success');
     }
 
-    function doSignup() {
+    async function doSignup() {
       const first = document.getElementById('signFirst').value.trim();
       const last = document.getElementById('signLast').value.trim();
       const email = document.getElementById('signEmail').value.trim();
@@ -2085,6 +2131,7 @@
       currentUser = newUser;
       save();
       closeModal('authModal');
+      await fetchCart();
       updateNav();
       renderMenu();
       showToast(`Welcome to Crumble & Co., ${first}! 🎉`, 'success');
