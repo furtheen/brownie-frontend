@@ -1945,7 +1945,8 @@
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({
             customerName: name,
-            items: items.map(i => ({ brownieId: i.id, quantity: i.qty }))
+              email: currentUser ? currentUser.email : 'furtheen23@gmail.com',
+              items: items.map(i => ({ brownieId: i.id, quantity: i.qty }))
           })
         });
         if (!orderRes.ok) throw new Error('Order fail');
