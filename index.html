@@ -448,6 +448,30 @@
       overflow: hidden;
     }
 
+    .prod-pic {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: 2;
+    }
+    .cart-pic, .admin-pic {
+      width: 48px;
+      height: 48px;
+      object-fit: cover;
+      border-radius: 8px;
+      display: block;
+    }
+    .chk-pic {
+      width: 24px;
+      height: 24px;
+      object-fit: cover;
+      border-radius: 4px;
+      flex-shrink: 0;
+    }
+
     .product-img::before {
       content: '';
       position: absolute;
@@ -1500,6 +1524,206 @@
       <div id="cartContent"></div>
     </div>
   </div>
+      border-radius: 8px;
+      color: var(--brown);
+      font-weight: 700;
+      margin: 16px 0;
+      display: inline-block;
+    }
+
+    .prod-pic { width: 100%; height: 160px; object-fit: cover; border-radius: 12px; }
+    .cart-pic { width: 50px; height: 50px; object-fit: cover; border-radius: 8px; }
+    .chk-pic { width: 30px; height: 30px; object-fit: cover; border-radius: 4px; }
+    .admin-pic { width: 60px; height: 60px; object-fit: cover; border-radius: 8px; }
+
+    /* responsive */
+    @media(max-width:768px) {
+      nav {
+        padding: 16px 20px;
+      }
+
+      .nav-links {
+        display: none;
+      }
+
+      .hero {
+        grid-template-columns: 1fr;
+        padding: 100px 20px 60px;
+        text-align: center;
+      }
+
+      .hero-right {
+        display: none;
+      }
+
+      .hero-cta {
+        justify-content: center;
+      }
+
+      .section {
+        padding: 60px 20px;
+      }
+
+      .form-row {
+        grid-template-columns: 1fr;
+      }
+
+      .admin-section {
+        padding: 60px 20px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ── NAV ── -->
+  <nav id="navbar">
+    <div class="nav-logo" onclick="scrollToMenu()">Crumble <span>&</span> Co.</div>
+    <div class="nav-links">
+      <a onclick="scrollToMenu()">Menu</a>
+      <a onclick="openAdmin()">Admin</a>
+      <a href="#about">About</a>
+    </div>
+    <div class="nav-actions" id="navActions">
+      <button class="btn-nav btn-ghost" onclick="openAuth('login')">Login</button>
+      <button class="btn-nav btn-solid" onclick="openAuth('signup')">Sign Up</button>
+    </div>
+  </nav>
+
+  <!-- ── HERO ── -->
+  <section class="hero" id="home">
+    <div class="hero-left">
+      <p class="hero-eyebrow">✦ Handcrafted with love, every single day</p>
+      <h1 class="hero-title">Every bite is a <em>little luxury.</em></h1>
+      <p class="hero-sub">Indulge in our artisan brownies — rich, fudgy, and made from the finest ingredients. Order
+        fresh, delivered warm.</p>
+      <div class="hero-cta">
+        <button class="btn-primary" onclick="scrollToMenu()">Order Now</button>
+        <button class="btn-outline" onclick="openAuth('signup')">Join Us</button>
+      </div>
+    </div>
+    <div class="hero-right">
+      <div class="hero-3d-wrap" id="heroWrap">
+        <canvas id="three-canvas"></canvas>
+        <div class="float-card one">
+          <div class="float-card-label">Today's Special</div>
+          <div class="float-card-val">🍫 Nutella</div>
+        </div>
+        <div class="float-card two">
+          <div class="float-card-label">Fresh Batch</div>
+          <div class="float-card-val">⭐ 4.9/5</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── MENU ── -->
+  <section class="section menu-section" id="menu">
+    <div class="section-header">
+      <p class="section-eyebrow">— Our Brownies —</p>
+      <h2 class="section-title">Pick Your Poison</h2>
+    </div>
+    <div class="menu-grid" id="menuGrid"></div>
+  </section>
+
+  <!-- ── FOOTER ── -->
+  <footer id="about">
+    <div class="footer-logo">Crumble <span>&</span> Co.</div>
+    <p>Artisan brownies baked fresh daily · Karaikudi, Tamil Nadu</p>
+    <p style="margin-top:6px;font-size:12px;">📞 Orders via WhatsApp & SMS notifications · 💳 Pay online or cash on
+      delivery</p>
+  </footer>
+
+  <!-- ── ADMIN SECTION ── -->
+  <div class="admin-section" id="adminSection">
+    <div class="admin-header">
+      <div>
+        <h2 class="admin-title">Owner <span>Dashboard</span></h2>
+        <p style="color:var(--muted);font-size:14px;margin-top:4px;">Toggle item availability & view incoming orders</p>
+      </div>
+      <button class="btn-nav btn-ghost" style="color:var(--caramel);border-color:var(--caramel);"
+        onclick="closeAdmin()">← Back to Shop</button>
+    </div>
+
+    <h3 style="font-family:'Playfair Display',serif;font-size:22px;color:var(--white);margin-bottom:20px;">Menu
+      Availability</h3>
+    <div class="admin-grid" id="adminGrid"></div>
+
+    <div class="orders-section">
+      <h3 class="orders-title">Live Orders</h3>
+      <div id="ordersList"></div>
+    </div>
+  </div>
+
+  <!-- ── AUTH MODAL ── -->
+  <div class="modal-overlay" id="authModal">
+    <div class="modal">
+      <button class="modal-close" onclick="closeModal('authModal')">✕</button>
+      <div class="tab-row">
+        <button class="tab-btn active" id="loginTab" onclick="switchTab('login')">Login</button>
+        <button class="tab-btn" id="signupTab" onclick="switchTab('signup')">Sign Up</button>
+      </div>
+
+      <!-- LOGIN -->
+      <div id="loginForm">
+        <h2 class="modal-title">Welcome back 👋</h2>
+        <p class="modal-sub">Login to your brownie account</p>
+        <div class="form-group">
+          <label class="form-label">Email or Phone</label>
+          <input class="form-input" type="text" placeholder="you@email.com or 9876543210" id="loginId">
+        </div>
+        <div class="form-group">
+          <label class="form-label">Password</label>
+          <input class="form-input" type="password" placeholder="••••••••" id="loginPass">
+        </div>
+        <button class="btn-full btn-brown" onclick="doLogin()">Login →</button>
+        <div class="divider"><span>or continue with</span></div>
+        <button class="btn-full"
+          style="background:var(--warm);color:var(--brown);font-weight:600;font-family:'DM Sans',sans-serif;border:none;padding:14px;border-radius:100px;cursor:pointer;"
+          onclick="showToast('📱 OTP sent to your phone!','success')">📱 Login with OTP</button>
+      </div>
+
+      <!-- SIGNUP -->
+      <div id="signupForm" style="display:none;">
+        <h2 class="modal-title">Create Account ✨</h2>
+        <p class="modal-sub">Join to start ordering</p>
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label">First Name</label>
+            <input class="form-input" type="text" placeholder="Ravi" id="signFirst">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Last Name</label>
+            <input class="form-input" type="text" placeholder="Kumar" id="signLast">
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Email</label>
+          <input class="form-input" type="email" placeholder="you@email.com" id="signEmail">
+        </div>
+        <div class="form-group">
+          <label class="form-label">Phone Number</label>
+          <input class="form-input" type="tel" placeholder="+91 9876543210" id="signPhone">
+        </div>
+        <div class="form-group">
+          <label class="form-label">Password</label>
+          <input class="form-input" type="password" placeholder="Min 8 characters" id="signPass">
+        </div>
+        <button class="btn-full btn-brown" onclick="doSignup()">Create Account →</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── CART MODAL ── -->
+  <div class="modal-overlay" id="cartModal">
+    <div class="modal modal-wide">
+      <button class="modal-close" onclick="closeModal('cartModal')">✕</button>
+      <h2 class="modal-title">Your Cart 🛒</h2>
+      <p class="modal-sub" id="cartSubtitle">Review your order</p>
+      <div id="cartContent"></div>
+    </div>
+  </div>
 
   <!-- ── CHECKOUT MODAL ── -->
   <div class="modal-overlay" id="checkoutModal">
@@ -1521,13 +1745,28 @@
 
     // ─── STATE ───────────────────────────────────────────────
     const DEFAULT_PRODUCTS = [
-      { id: 1, name: 'Classic Brownie', emoji: '🍫', desc: 'Rich dark chocolate, dense and fudgy. The one that started it all.', price: 60, available: true },
-      { id: 2, name: 'Walnut Brownie', emoji: '🌰', desc: 'Classic brownie loaded with crunchy California walnuts on every bite.', price: 75, available: true },
-      { id: 3, name: 'Choco Chip Brownie', emoji: '🍪', desc: 'Double chocolate — fudgy base + melted choco chips throughout.', price: 70, available: true },
+      { id: 1, name: 'Classic Brownie', emoji: 'images/Chocolate Delight_ Decadent Fudgy Brownies.jpg', desc: 'Rich dark chocolate, dense and fudgy. The one that started it all.', price: 60, available: true },
+      { id: 2, name: 'Walnut Brownie', emoji: 'images/download (12).jpg', desc: 'Classic brownie loaded with crunchy California walnuts on every bite.', price: 75, available: true },
+      { id: 3, name: 'Choco Chip Brownie', emoji: 'images/download.webp', desc: 'Double chocolate — fudgy base + melted choco chips throughout.', price: 70, available: true },
       { id: 4, name: 'Oreo Brownie', emoji: '⚫', desc: 'Crushed Oreo cookies baked right into our signature brownie batter.', price: 80, available: true },
-      { id: 5, name: 'Nutella Brownie', emoji: '🫙', desc: 'A swirl of Nutella baked into every bite. Pure indulgence.', price: 90, available: false },
-      { id: 6, name: 'Brownie Sundae', emoji: '🍨', desc: 'Warm brownie topped with vanilla ice cream and chocolate drizzle.', price: 120, available: true },
+      { id: 5, name: 'Nutella Brownie', emoji: 'images/Decadent Nutella Fudge Brownies.jpg', desc: 'A swirl of Nutella baked into every bite. Pure indulgence.', price: 90, available: false },
+      { id: 6, name: 'Brownie Sundae', emoji: 'images/download (13).jpg', desc: 'Warm brownie topped with vanilla ice cream and chocolate drizzle.', price: 120, available: true },
     ];
+
+    const MAP_IMAGE = {
+      'Classic Brownie': 'images/Chocolate Delight_ Decadent Fudgy Brownies.jpg',
+      'Walnut Brownie': 'images/download (12).jpg',
+      'Choco Chip Brownie': 'images/download.webp',
+      'Nutella Brownie': 'images/Decadent Nutella Fudge Brownies.jpg',
+      'Brownie Sundae': 'images/download (13).jpg'
+    };
+
+    function getEmojiHtml(emojiStr, classes) {
+      if (typeof emojiStr === 'string' && (emojiStr.includes('.jpg') || emojiStr.includes('.png') || emojiStr.includes('.webp'))) {
+        return `<img src="${emojiStr}" class="${classes}" alt="Brownie">`;
+      }
+      return `<span>${emojiStr}</span>`;
+    }
 
     let products = [];
     let cart = JSON.parse(localStorage.getItem('bf_cart')) || [];
@@ -1550,7 +1789,7 @@
 
         if (data && data.length > 0) {
           products = data.map(b => ({
-            id: b.id, name: b.name, desc: b.description, price: b.price, emoji: b.imageUrl || '🍫', available: true
+            id: b.id, name: b.name, desc: b.description, price: b.price, emoji: MAP_IMAGE[b.name] || b.imageUrl || '🍫', available: true
           }));
         } else {
           // Auto-seed database if empty
@@ -1565,7 +1804,7 @@
           const newRes = await fetch(`${API_BASE}/Brownies`);
           const newData = await newRes.json();
           products = newData.map(b => ({
-            id: b.id, name: b.name, desc: b.description, price: b.price, emoji: b.imageUrl, available: true
+            id: b.id, name: b.name, desc: b.description, price: b.price, emoji: MAP_IMAGE[b.name] || b.imageUrl || '🍫', available: true
           }));
         }
         renderMenu();
@@ -1736,7 +1975,7 @@
         return `
     <div class="product-card${p.available ? '' : ' sold-out'}" id="card-${p.id}">
       <div class="product-img">
-        <span>${p.emoji}</span>
+        ${getEmojiHtml(p.emoji, 'prod-pic')}
         ${p.available
             ? `<span class="avail-badge">Available</span>`
             : `<span class="sold-badge">Sold Out</span>`}
@@ -1841,7 +2080,7 @@
     <div class="cart-items">
       ${cart.map(i => `
         <div class="cart-item">
-          <span class="cart-item-emoji">${i.emoji}</span>
+          <div class="cart-item-emoji">${getEmojiHtml(i.emoji, 'cart-pic')}</div>
           <div class="cart-item-info">
             <div class="cart-item-name">${i.name}</div>
             <div class="cart-item-qty">${i.qty} piece${i.qty > 1 ? 's' : ''} × ₹${i.price}</div>
@@ -1889,7 +2128,7 @@
     <div class="form-group">
       <label class="form-label">Order Summary</label>
       <div style="background:var(--warm);border-radius:12px;padding:14px 16px;font-size:14px;color:var(--brown);">
-        ${items.map(i => `<div style="display:flex;justify-content:space-between;margin-bottom:4px;"><span>${i.emoji} ${i.name} ×${i.qty}</span><span>₹${i.price * i.qty}</span></div>`).join('')}
+        ${items.map(i => `<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:4px;"><div style="display:flex;align-items:center;">${getEmojiHtml(i.emoji, 'chk-pic')} <span style="margin-left:8px;">${i.name} ×${i.qty}</span></div><span>₹${i.price * i.qty}</span></div>`).join('')}
         <div style="border-top:1px solid rgba(200,135,58,0.3);margin-top:8px;padding-top:8px;font-weight:700;display:flex;justify-content:space-between;"><span>Grand Total</span><span>₹${grand}</span></div>
       </div>
     </div>
@@ -1946,236 +2185,6 @@
           body: JSON.stringify({
             customerName: name,
               email: currentUser ? currentUser.email : 'furtheen23@gmail.com',
-              items: items.map(i => ({ brownieId: i.id, quantity: i.qty }))
-          })
-        });
-        if (!orderRes.ok) throw new Error('Order fail');
-        const orderData = await orderRes.json();
-        localOrderId = orderData.id;
-      } catch (err) {
-        showToast('Failed to create order on server', 'error');
-        return;
-      }
-
-      if (payMethod === 'cod') {
-        processOrder(`ORD-${localOrderId}`, items, amount, name, phone, addr, 'COD');
-        return;
-      }
-
-      // 2. Razorpay online payment flow
-      document.getElementById('checkoutContent').innerHTML = `
-    <div class="pay-loading">
-      <div class="pay-spinner"></div>
-      <p style="color:var(--brown);font-weight:600;font-size:16px;">Connecting to Razorpay...</p>
-      <p style="color:var(--muted);font-size:13px;margin-top:8px;">You'll be redirected to the payment page</p>
-    </div>`;
-
-      try {
-        const rzpRes = await fetch(`${API_BASE}/Payment/create-order/${localOrderId}`, { method: 'POST' });
-        const rzpData = await rzpRes.json();
-        const rzpOrderId = rzpData.razorpayOrderId;
-
-        const options = {
-          key: 'rzp_test_SdQhlvZxgYgLTg', // Your real Test Key!
-          amount: amount * 100,
-          currency: 'INR',
-          name: 'Crumble & Co.',
-          description: items.map(i => `${i.name}×${i.qty}`).join(', '),
-          order_id: rzpOrderId, // Using the backend Order Intent
-          handler: async function (response) {
-            // Verify payment completely via Backend
-            const verifyRes = await fetch(`${API_BASE}/Payment/verify`, {
-              method: 'POST',
-              headers: { 'Content-Type': 'application/json' },
-              body: JSON.stringify({
-                razorpayPaymentId: response.razorpay_payment_id,
-                razorpayOrderId: response.razorpay_order_id,
-                razorpaySignature: response.razorpay_signature,
-                localOrderId: localOrderId
-              })
-            });
-
-            if (verifyRes.ok) {
-              processOrder(`ORD-${localOrderId}`, items, amount, name, phone, addr, 'PAID', response.razorpay_payment_id);
-            } else {
-              showToast('Payment Verification Failed!', 'error');
-            }
-          },
-          prefill: { name, contact: phone },
-          theme: { color: '#C8873A' },
-          modal: {
-            ondismiss: () => {
-              document.getElementById('checkoutContent').innerHTML = '<p style="text-align:center;padding:40px;color:var(--muted);">Payment cancelled. <button onclick="closeModal(\'checkoutModal\')" style="color:var(--caramel);border:none;background:none;cursor:pointer;font-weight:600;">Go back</button></p>';
-            }
-          }
-        };
-
-        // Load Razorpay script dynamically
-        if (window.Razorpay) {
-          const rzp = new window.Razorpay(options);
-          rzp.open();
-        } else {
-          const script = document.createElement('script');
-          script.src = 'https://checkout.razorpay.com/v1/checkout.js';
-          script.onload = () => {
-            const rzp = new window.Razorpay(options);
-            rzp.open();
-          };
-          document.head.appendChild(script);
-        }
-      } catch (err) {
-        showToast('Payment gateway error', 'error');
-      }
-    }
-
-    async function processOrder(orderId, items, amount, name, phone, addr, status, paymentId = '') {
-      const order = {
-        id: orderId,
-        customer: name,
-        phone,
-        address: addr,
-        items: items.map(i => `${i.name}×${i.qty}`).join(', '),
-        amount,
-        status,
-        paymentId,
-        time: new Date().toLocaleTimeString('en-IN', { hour: '2-digit', minute: '2-digit' })
-      };
-      orders.unshift(order);
-      cart = [];
-      save();
-      updateCartBadge();
-      
-      if (currentUser) {
-        try { await fetch(`${API_BASE}/Cart/${currentUser.id}/clear`, { method: 'DELETE' }); } catch (e) {}
-      }
-
-      sendNotifications(order);
-      showOrderSuccess(order);
-    }
-
-    // ─── NOTIFICATIONS ────────────────────────────────────────
-    function sendNotifications(order) {
-      // Owner notification (simulated — connect to backend SMS/WhatsApp API)
-      console.log(`📱 OWNER ALERT: New order ${order.id} from ${order.customer} — ${order.items} — ₹${order.amount} (${order.status})`);
-
-      // Customer notification (simulated)
-      console.log(`📲 CUSTOMER SMS to ${order.phone}: Hi ${order.customer}! Your order ${order.id} has been placed. Items: ${order.items}. Total: ₹${order.amount}. We'll deliver soon! - Crumble & Co.`);
-
-      // WhatsApp deep link for owner (opens WhatsApp with pre-filled message)
-      const ownerMsg = encodeURIComponent(`🍫 NEW ORDER!\n\nOrder ID: ${order.id}\nCustomer: ${order.customer}\nPhone: ${order.phone}\nItems: ${order.items}\nTotal: ₹${order.amount}\nPayment: ${order.status}\nAddress: ${order.address}\nTime: ${order.time}`);
-      // window.open(`https://wa.me/91OWNERNUMBER?text=${ownerMsg}`);
-
-      showToast(`📲 Order confirmation sent to ${order.phone}`, 'success');
-    }
-
-    // ─── ORDER SUCCESS ─────────────────────────────────────────
-    function showOrderSuccess(order) {
-      document.getElementById('checkoutContent').innerHTML = `
-    <div class="order-success">
-      <div class="success-icon">🎉</div>
-      <h2 class="success-title">Order Placed!</h2>
-      <p class="success-sub">Your brownies are being prepared with love.<br>You'll receive a confirmation on WhatsApp & SMS.</p>
-      <div class="order-ref">${order.id}</div>
-      <p style="font-size:13px;color:var(--muted);margin-bottom:24px;">Payment: ${order.status} · ₹${order.amount}</p>
-      <button class="btn-full btn-brown" onclick="closeModal('checkoutModal');renderMenu()">Continue Shopping 🍫</button>
-    </div>`;
-    }
-
-    // ─── AUTH ─────────────────────────────────────────────────
-    function openAuth(tab = 'login') {
-      document.getElementById('authModal').classList.add('active');
-      switchTab(tab);
-    }
-
-    function switchTab(tab) {
-      document.getElementById('loginForm').style.display = tab === 'login' ? 'block' : 'none';
-      document.getElementById('signupForm').style.display = tab === 'signup' ? 'block' : 'none';
-      document.getElementById('loginTab').classList.toggle('active', tab === 'login');
-      document.getElementById('signupTab').classList.toggle('active', tab === 'signup');
-    }
-
-    async function doLogin() {
-      const id = document.getElementById('loginId').value.trim();
-      const pass = document.getElementById('loginPass').value;
-      if (!id || !pass) { showToast('Please fill all fields', 'error'); return; }
-
-      // Check stored users
-      const users = JSON.parse(localStorage.getItem('bf_users') || '[]');
-      const user = users.find(u => u.email === id || u.phone === id);
-      if (!user || user.password !== pass) { showToast('Invalid credentials ❌', 'error'); return; }
-
-      currentUser = user;
-      save();
-      closeModal('authModal');
-      await fetchCart();
-      updateNav();
-      renderMenu();
-      showToast(`Welcome back, ${user.firstName}! 🍫`, 'success');
-    }
-
-    async function doSignup() {
-      const first = document.getElementById('signFirst').value.trim();
-      const last = document.getElementById('signLast').value.trim();
-      const email = document.getElementById('signEmail').value.trim();
-      const phone = document.getElementById('signPhone').value.trim();
-      const pass = document.getElementById('signPass').value;
-      if (!first || !email || !phone || !pass) { showToast('Please fill all fields', 'error'); return; }
-      if (pass.length < 8) { showToast('Password must be 8+ characters', 'error'); return; }
-
-      const users = JSON.parse(localStorage.getItem('bf_users') || '[]');
-      if (users.find(u => u.email === email)) { showToast('Email already registered ❌', 'error'); return; }
-
-      const newUser = { id: 'U' + Date.now(), firstName: first, lastName: last, email, phone, password: pass };
-      users.push(newUser);
-      localStorage.setItem('bf_users', JSON.stringify(users));
-
-      currentUser = newUser;
-      save();
-      closeModal('authModal');
-      await fetchCart();
-      updateNav();
-      renderMenu();
-      showToast(`Welcome to Crumble & Co., ${first}! 🎉`, 'success');
-    }
-
-    function logoutUser() {
-      currentUser = null;
-      cart = [];
-      localStorage.removeItem('bf_user');
-      save();
-      updateNav();
-      renderMenu();
-      showToast('Logged out. See you soon! 👋');
-    }
-
-    // ─── ADMIN ────────────────────────────────────────────────
-    const ADMIN_PASS = 'admin123'; // Change this!
-
-    function openAdmin() {
-      const pass = prompt('🔐 Enter admin password:');
-      if (pass !== ADMIN_PASS) { showToast('Wrong password ❌', 'error'); return; }
-      document.getElementById('adminSection').classList.add('active');
-      document.getElementById('adminSection').scrollIntoView({ behavior: 'smooth' });
-      renderAdmin();
-    }
-
-    function closeAdmin() {
-      document.getElementById('adminSection').classList.remove('active');
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
-
-    function renderAdmin() {
-      // Item toggles
-      document.getElementById('adminGrid').innerHTML = products.map(p => `
-    <div class="admin-card">
-      <div class="admin-card-top">
-        <span class="admin-card-emoji">${p.emoji}</span>
-        <label class="admin-toggle">
-          <input type="checkbox" ${p.available ? 'checked' : ''} onchange="toggleItem(${p.id},this.checked)">
-          <span class="toggle-slider"></span>
-        </label>
-      </div>
-      <div class="admin-card-name">${p.name}</div>
       <div>₹${p.price}</div>
       <span class="admin-card-status ${p.available ? 'on' : 'off'}" id="status-${p.id}">${p.available ? 'Available' : 'Sold Out'}</span>
     </div>`).join('');
