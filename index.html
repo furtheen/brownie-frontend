@@ -457,13 +457,16 @@
       left: 0;
       z-index: 2;
     }
-    .cart-pic, .admin-pic {
+
+    .cart-pic,
+    .admin-pic {
       width: 48px;
       height: 48px;
       object-fit: cover;
       border-radius: 8px;
       display: block;
     }
+
     .chk-pic {
       width: 24px;
       height: 24px;
@@ -1524,425 +1527,426 @@
       <div id="cartContent"></div>
     </div>
   </div>
-      border-radius: 8px;
-      color: var(--brown);
-      font-weight: 700;
-      margin: 16px 0;
-      display: inline-block;
-    }
+  border-radius: 8px;
+  color: var(--brown);
+  font-weight: 700;
+  margin: 16px 0;
+  display: inline-block;
+  }
 
-    .prod-pic { width: 100%; height: 160px; object-fit: cover; border-radius: 12px; }
-    .cart-pic { width: 50px; height: 50px; object-fit: cover; border-radius: 8px; }
-    .chk-pic { width: 30px; height: 30px; object-fit: cover; border-radius: 4px; }
-    .admin-pic { width: 60px; height: 60px; object-fit: cover; border-radius: 8px; }
+  .prod-pic { width: 100%; height: 160px; object-fit: cover; border-radius: 12px; }
+  .cart-pic { width: 50px; height: 50px; object-fit: cover; border-radius: 8px; }
+  .chk-pic { width: 30px; height: 30px; object-fit: cover; border-radius: 4px; }
+  .admin-pic { width: 60px; height: 60px; object-fit: cover; border-radius: 8px; }
 
-    /* responsive */
-    @media(max-width:768px) {
-      nav {
-        padding: 16px 20px;
-      }
+  /* responsive */
+  @media(max-width:768px) {
+  nav {
+  padding: 16px 20px;
+  }
 
-      .nav-links {
-        display: none;
-      }
+  .nav-links {
+  display: none;
+  }
 
-      .hero {
-        grid-template-columns: 1fr;
-        padding: 100px 20px 60px;
-        text-align: center;
-      }
+  .hero {
+  grid-template-columns: 1fr;
+  padding: 100px 20px 60px;
+  text-align: center;
+  }
 
-      .hero-right {
-        display: none;
-      }
+  .hero-right {
+  display: none;
+  }
 
-      .hero-cta {
-        justify-content: center;
-      }
+  .hero-cta {
+  justify-content: center;
+  }
 
-      .section {
-        padding: 60px 20px;
-      }
+  .section {
+  padding: 60px 20px;
+  }
 
-      .form-row {
-        grid-template-columns: 1fr;
-      }
+  .form-row {
+  grid-template-columns: 1fr;
+  }
 
-      .admin-section {
-        padding: 60px 20px;
-      }
-    }
+  .admin-section {
+  padding: 60px 20px;
+  }
+  }
   </style>
-</head>
+  </head>
 
-<body>
+  <body>
 
-  <!-- ── NAV ── -->
-  <nav id="navbar">
-    <div class="nav-logo" onclick="scrollToMenu()">Crumble <span>&</span> Co.</div>
-    <div class="nav-links">
-      <a onclick="scrollToMenu()">Menu</a>
-      <a onclick="openAdmin()">Admin</a>
-      <a href="#about">About</a>
-    </div>
-    <div class="nav-actions" id="navActions">
-      <button class="btn-nav btn-ghost" onclick="openAuth('login')">Login</button>
-      <button class="btn-nav btn-solid" onclick="openAuth('signup')">Sign Up</button>
-    </div>
-  </nav>
-
-  <!-- ── HERO ── -->
-  <section class="hero" id="home">
-    <div class="hero-left">
-      <p class="hero-eyebrow">✦ Handcrafted with love, every single day</p>
-      <h1 class="hero-title">Every bite is a <em>little luxury.</em></h1>
-      <p class="hero-sub">Indulge in our artisan brownies — rich, fudgy, and made from the finest ingredients. Order
-        fresh, delivered warm.</p>
-      <div class="hero-cta">
-        <button class="btn-primary" onclick="scrollToMenu()">Order Now</button>
-        <button class="btn-outline" onclick="openAuth('signup')">Join Us</button>
+    <!-- ── NAV ── -->
+    <nav id="navbar">
+      <div class="nav-logo" onclick="scrollToMenu()">Crumble <span>&</span> Co.</div>
+      <div class="nav-links">
+        <a onclick="scrollToMenu()">Menu</a>
+        <a onclick="openAdmin()">Admin</a>
+        <a href="#about">About</a>
       </div>
-    </div>
-    <div class="hero-right">
-      <div class="hero-3d-wrap" id="heroWrap">
-        <canvas id="three-canvas"></canvas>
-        <div class="float-card one">
-          <div class="float-card-label">Today's Special</div>
-          <div class="float-card-val">🍫 Nutella</div>
-        </div>
-        <div class="float-card two">
-          <div class="float-card-label">Fresh Batch</div>
-          <div class="float-card-val">⭐ 4.9/5</div>
+      <div class="nav-actions" id="navActions">
+        <button class="btn-nav btn-ghost" onclick="openAuth('login')">Login</button>
+        <button class="btn-nav btn-solid" onclick="openAuth('signup')">Sign Up</button>
+      </div>
+    </nav>
+
+    <!-- ── HERO ── -->
+    <section class="hero" id="home">
+      <div class="hero-left">
+        <p class="hero-eyebrow">✦ Handcrafted with love, every single day</p>
+        <h1 class="hero-title">Every bite is a <em>little luxury.</em></h1>
+        <p class="hero-sub">Indulge in our artisan brownies — rich, fudgy, and made from the finest ingredients. Order
+          fresh, delivered warm.</p>
+        <div class="hero-cta">
+          <button class="btn-primary" onclick="scrollToMenu()">Order Now</button>
+          <button class="btn-outline" onclick="openAuth('signup')">Join Us</button>
         </div>
       </div>
-    </div>
-  </section>
-
-  <!-- ── MENU ── -->
-  <section class="section menu-section" id="menu">
-    <div class="section-header">
-      <p class="section-eyebrow">— Our Brownies —</p>
-      <h2 class="section-title">Pick Your Poison</h2>
-    </div>
-    <div class="menu-grid" id="menuGrid"></div>
-  </section>
-
-  <!-- ── FOOTER ── -->
-  <footer id="about">
-    <div class="footer-logo">Crumble <span>&</span> Co.</div>
-    <p>Artisan brownies baked fresh daily · Karaikudi, Tamil Nadu</p>
-    <p style="margin-top:6px;font-size:12px;">📞 Orders via WhatsApp & SMS notifications · 💳 Pay online or cash on
-      delivery</p>
-  </footer>
-
-  <!-- ── ADMIN SECTION ── -->
-  <div class="admin-section" id="adminSection">
-    <div class="admin-header">
-      <div>
-        <h2 class="admin-title">Owner <span>Dashboard</span></h2>
-        <p style="color:var(--muted);font-size:14px;margin-top:4px;">Toggle item availability & view incoming orders</p>
-      </div>
-      <button class="btn-nav btn-ghost" style="color:var(--caramel);border-color:var(--caramel);"
-        onclick="closeAdmin()">← Back to Shop</button>
-    </div>
-
-    <h3 style="font-family:'Playfair Display',serif;font-size:22px;color:var(--white);margin-bottom:20px;">Menu
-      Availability</h3>
-    <div class="admin-grid" id="adminGrid"></div>
-
-    <div class="orders-section">
-      <h3 class="orders-title">Live Orders</h3>
-      <div id="ordersList"></div>
-    </div>
-  </div>
-
-  <!-- ── AUTH MODAL ── -->
-  <div class="modal-overlay" id="authModal">
-    <div class="modal">
-      <button class="modal-close" onclick="closeModal('authModal')">✕</button>
-      <div class="tab-row">
-        <button class="tab-btn active" id="loginTab" onclick="switchTab('login')">Login</button>
-        <button class="tab-btn" id="signupTab" onclick="switchTab('signup')">Sign Up</button>
-      </div>
-
-      <!-- LOGIN -->
-      <div id="loginForm">
-        <h2 class="modal-title">Welcome back 👋</h2>
-        <p class="modal-sub">Login to your brownie account</p>
-        <div class="form-group">
-          <label class="form-label">Email or Phone</label>
-          <input class="form-input" type="text" placeholder="you@email.com or 9876543210" id="loginId">
-        </div>
-        <div class="form-group">
-          <label class="form-label">Password</label>
-          <input class="form-input" type="password" placeholder="••••••••" id="loginPass">
-        </div>
-        <button class="btn-full btn-brown" onclick="doLogin()">Login →</button>
-        <div class="divider"><span>or continue with</span></div>
-        <button class="btn-full"
-          style="background:var(--warm);color:var(--brown);font-weight:600;font-family:'DM Sans',sans-serif;border:none;padding:14px;border-radius:100px;cursor:pointer;"
-          onclick="showToast('📱 OTP sent to your phone!','success')">📱 Login with OTP</button>
-      </div>
-
-      <!-- SIGNUP -->
-      <div id="signupForm" style="display:none;">
-        <h2 class="modal-title">Create Account ✨</h2>
-        <p class="modal-sub">Join to start ordering</p>
-        <div class="form-row">
-          <div class="form-group">
-            <label class="form-label">First Name</label>
-            <input class="form-input" type="text" placeholder="Ravi" id="signFirst">
+      <div class="hero-right">
+        <div class="hero-3d-wrap" id="heroWrap">
+          <canvas id="three-canvas"></canvas>
+          <div class="float-card one">
+            <div class="float-card-label">Today's Special</div>
+            <div class="float-card-val">🍫 Nutella</div>
           </div>
-          <div class="form-group">
-            <label class="form-label">Last Name</label>
-            <input class="form-input" type="text" placeholder="Kumar" id="signLast">
+          <div class="float-card two">
+            <div class="float-card-label">Fresh Batch</div>
+            <div class="float-card-val">⭐ 4.9/5</div>
           </div>
         </div>
-        <div class="form-group">
-          <label class="form-label">Email</label>
-          <input class="form-input" type="email" placeholder="you@email.com" id="signEmail">
+      </div>
+    </section>
+
+    <!-- ── MENU ── -->
+    <section class="section menu-section" id="menu">
+      <div class="section-header">
+        <p class="section-eyebrow">— Our Brownies —</p>
+        <h2 class="section-title">Pick Your Poison</h2>
+      </div>
+      <div class="menu-grid" id="menuGrid"></div>
+    </section>
+
+    <!-- ── FOOTER ── -->
+    <footer id="about">
+      <div class="footer-logo">Crumble <span>&</span> Co.</div>
+      <p>Artisan brownies baked fresh daily · Karaikudi, Tamil Nadu</p>
+      <p style="margin-top:6px;font-size:12px;">📞 Orders via WhatsApp & SMS notifications · 💳 Pay online or cash on
+        delivery</p>
+    </footer>
+
+    <!-- ── ADMIN SECTION ── -->
+    <div class="admin-section" id="adminSection">
+      <div class="admin-header">
+        <div>
+          <h2 class="admin-title">Owner <span>Dashboard</span></h2>
+          <p style="color:var(--muted);font-size:14px;margin-top:4px;">Toggle item availability & view incoming orders
+          </p>
         </div>
-        <div class="form-group">
-          <label class="form-label">Phone Number</label>
-          <input class="form-input" type="tel" placeholder="+91 9876543210" id="signPhone">
-        </div>
-        <div class="form-group">
-          <label class="form-label">Password</label>
-          <input class="form-input" type="password" placeholder="Min 8 characters" id="signPass">
-        </div>
-        <button class="btn-full btn-brown" onclick="doSignup()">Create Account →</button>
+        <button class="btn-nav btn-ghost" style="color:var(--caramel);border-color:var(--caramel);"
+          onclick="closeAdmin()">← Back to Shop</button>
+      </div>
+
+      <h3 style="font-family:'Playfair Display',serif;font-size:22px;color:var(--white);margin-bottom:20px;">Menu
+        Availability</h3>
+      <div class="admin-grid" id="adminGrid"></div>
+
+      <div class="orders-section">
+        <h3 class="orders-title">Live Orders</h3>
+        <div id="ordersList"></div>
       </div>
     </div>
-  </div>
 
-  <!-- ── CART MODAL ── -->
-  <div class="modal-overlay" id="cartModal">
-    <div class="modal modal-wide">
-      <button class="modal-close" onclick="closeModal('cartModal')">✕</button>
-      <h2 class="modal-title">Your Cart 🛒</h2>
-      <p class="modal-sub" id="cartSubtitle">Review your order</p>
-      <div id="cartContent"></div>
+    <!-- ── AUTH MODAL ── -->
+    <div class="modal-overlay" id="authModal">
+      <div class="modal">
+        <button class="modal-close" onclick="closeModal('authModal')">✕</button>
+        <div class="tab-row">
+          <button class="tab-btn active" id="loginTab" onclick="switchTab('login')">Login</button>
+          <button class="tab-btn" id="signupTab" onclick="switchTab('signup')">Sign Up</button>
+        </div>
+
+        <!-- LOGIN -->
+        <div id="loginForm">
+          <h2 class="modal-title">Welcome back 👋</h2>
+          <p class="modal-sub">Login to your brownie account</p>
+          <div class="form-group">
+            <label class="form-label">Email or Phone</label>
+            <input class="form-input" type="text" placeholder="you@email.com or 9876543210" id="loginId">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Password</label>
+            <input class="form-input" type="password" placeholder="••••••••" id="loginPass">
+          </div>
+          <button class="btn-full btn-brown" onclick="doLogin()">Login →</button>
+          <div class="divider"><span>or continue with</span></div>
+          <button class="btn-full"
+            style="background:var(--warm);color:var(--brown);font-weight:600;font-family:'DM Sans',sans-serif;border:none;padding:14px;border-radius:100px;cursor:pointer;"
+            onclick="showToast('📱 OTP sent to your phone!','success')">📱 Login with OTP</button>
+        </div>
+
+        <!-- SIGNUP -->
+        <div id="signupForm" style="display:none;">
+          <h2 class="modal-title">Create Account ✨</h2>
+          <p class="modal-sub">Join to start ordering</p>
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label">First Name</label>
+              <input class="form-input" type="text" placeholder="Ravi" id="signFirst">
+            </div>
+            <div class="form-group">
+              <label class="form-label">Last Name</label>
+              <input class="form-input" type="text" placeholder="Kumar" id="signLast">
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Email</label>
+            <input class="form-input" type="email" placeholder="you@email.com" id="signEmail">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Phone Number</label>
+            <input class="form-input" type="tel" placeholder="+91 9876543210" id="signPhone">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Password</label>
+            <input class="form-input" type="password" placeholder="Min 8 characters" id="signPass">
+          </div>
+          <button class="btn-full btn-brown" onclick="doSignup()">Create Account →</button>
+        </div>
+      </div>
     </div>
-  </div>
 
-  <!-- ── CHECKOUT MODAL ── -->
-  <div class="modal-overlay" id="checkoutModal">
-    <div class="modal modal-wide">
-      <button class="modal-close" onclick="closeModal('checkoutModal')">✕</button>
-      <div id="checkoutContent"></div>
+    <!-- ── CART MODAL ── -->
+    <div class="modal-overlay" id="cartModal">
+      <div class="modal modal-wide">
+        <button class="modal-close" onclick="closeModal('cartModal')">✕</button>
+        <h2 class="modal-title">Your Cart 🛒</h2>
+        <p class="modal-sub" id="cartSubtitle">Review your order</p>
+        <div id="cartContent"></div>
+      </div>
     </div>
-  </div>
 
-  <!-- ── TOAST ── -->
-  <div class="toast" id="toast">
-    <span id="toastIcon">✓</span>
-    <span id="toastMsg">Done!</span>
-  </div>
+    <!-- ── CHECKOUT MODAL ── -->
+    <div class="modal-overlay" id="checkoutModal">
+      <div class="modal modal-wide">
+        <button class="modal-close" onclick="closeModal('checkoutModal')">✕</button>
+        <div id="checkoutContent"></div>
+      </div>
+    </div>
 
-  <script>
-    const API_BASE = "https://brownie-site.onrender.com/api";
+    <!-- ── TOAST ── -->
+    <div class="toast" id="toast">
+      <span id="toastIcon">✓</span>
+      <span id="toastMsg">Done!</span>
+    </div>
+
+    <script>
+      const API_BASE = "https://brownie-site.onrender.com/api";
 
 
-    // ─── STATE ───────────────────────────────────────────────
-    const DEFAULT_PRODUCTS = [
-      { id: 1, name: 'Classic Brownie', emoji: 'images/Chocolate Delight_ Decadent Fudgy Brownies.jpg', desc: 'Rich dark chocolate, dense and fudgy. The one that started it all.', price: 60, available: true },
-      { id: 2, name: 'Walnut Brownie', emoji: 'images/download (12).jpg', desc: 'Classic brownie loaded with crunchy California walnuts on every bite.', price: 75, available: true },
-      { id: 3, name: 'Choco Chip Brownie', emoji: 'images/download.webp', desc: 'Double chocolate — fudgy base + melted choco chips throughout.', price: 70, available: true },
-      { id: 4, name: 'Oreo Brownie', emoji: '⚫', desc: 'Crushed Oreo cookies baked right into our signature brownie batter.', price: 80, available: true },
-      { id: 5, name: 'Nutella Brownie', emoji: 'images/Decadent Nutella Fudge Brownies.jpg', desc: 'A swirl of Nutella baked into every bite. Pure indulgence.', price: 90, available: false },
-      { id: 6, name: 'Brownie Sundae', emoji: 'images/download (13).jpg', desc: 'Warm brownie topped with vanilla ice cream and chocolate drizzle.', price: 120, available: true },
-    ];
+      // ─── STATE ───────────────────────────────────────────────
+      const DEFAULT_PRODUCTS = [
+        { id: 1, name: 'Classic Brownie', emoji: 'images/Chocolate Delight_ Decadent Fudgy Brownies.jpg', desc: 'Rich dark chocolate, dense and fudgy. The one that started it all.', price: 60, available: true },
+        { id: 2, name: 'Walnut Brownie', emoji: 'images/download (12).jpg', desc: 'Classic brownie loaded with crunchy California walnuts on every bite.', price: 75, available: true },
+        { id: 3, name: 'Choco Chip Brownie', emoji: 'images/download.webp', desc: 'Double chocolate — fudgy base + melted choco chips throughout.', price: 70, available: true },
+        { id: 4, name: 'Oreo Brownie', emoji: '⚫', desc: 'Crushed Oreo cookies baked right into our signature brownie batter.', price: 80, available: true },
+        { id: 5, name: 'Nutella Brownie', emoji: 'images/Decadent Nutella Fudge Brownies.jpg', desc: 'A swirl of Nutella baked into every bite. Pure indulgence.', price: 90, available: false },
+        { id: 6, name: 'Brownie Sundae', emoji: 'images/download (13).jpg', desc: 'Warm brownie topped with vanilla ice cream and chocolate drizzle.', price: 120, available: true },
+      ];
 
-    const MAP_IMAGE = {
-      'Classic Brownie': 'images/Chocolate Delight_ Decadent Fudgy Brownies.jpg',
-      'Walnut Brownie': 'images/download (12).jpg',
-      'Choco Chip Brownie': 'images/download.webp',
-      'Nutella Brownie': 'images/Decadent Nutella Fudge Brownies.jpg',
-      'Brownie Sundae': 'images/download (13).jpg'
-    };
+      const MAP_IMAGE = {
+        'Classic Brownie': 'images/Chocolate Delight_ Decadent Fudgy Brownies.jpg',
+        'Walnut Brownie': 'images/download (12).jpg',
+        'Choco Chip Brownie': 'images/download.webp',
+        'Nutella Brownie': 'images/Decadent Nutella Fudge Brownies.jpg',
+        'Brownie Sundae': 'images/download (13).jpg'
+      };
 
-    function getEmojiHtml(emojiStr, classes) {
-      if (typeof emojiStr === 'string' && (emojiStr.includes('.jpg') || emojiStr.includes('.png') || emojiStr.includes('.webp'))) {
-        return `<img src="${emojiStr}" class="${classes}" alt="Brownie">`;
-      }
-      return `<span>${emojiStr}</span>`;
-    }
-
-    let products = [];
-    let cart = JSON.parse(localStorage.getItem('bf_cart')) || [];
-    let currentUser = JSON.parse(localStorage.getItem('bf_user')) || null;
-    let orders = JSON.parse(localStorage.getItem('bf_orders')) || [];
-    let quantities = {};
-
-    // Fetch on load
-    document.addEventListener('DOMContentLoaded', fetchBrownies);
-
-    async function fetchBrownies() {
-      try {
-        const res = await fetch(`${API_BASE}/Brownies`);
-        if (res.status === 401) {
-          showToast('⚠️ Backend Access Denied (401)', 'error');
-          throw new Error('401 Unauthorized');
+      function getEmojiHtml(emojiStr, classes) {
+        if (typeof emojiStr === 'string' && (emojiStr.includes('.jpg') || emojiStr.includes('.png') || emojiStr.includes('.webp'))) {
+          return `<img src="${emojiStr}" class="${classes}" alt="Brownie">`;
         }
-        if (!res.ok) throw new Error('API down');
-        const data = await res.json();
+        return `<span>${emojiStr}</span>`;
+      }
 
-        if (data && data.length > 0) {
-          products = data.map(b => ({
-            id: b.id, name: b.name, desc: b.description, price: b.price, emoji: MAP_IMAGE[b.name] || b.imageUrl || '🍫', available: true
-          }));
-        } else {
-          // Auto-seed database if empty
-          for (const p of DEFAULT_PRODUCTS) {
-            await fetch(`${API_BASE}/Brownies`, {
-              method: 'POST',
-              headers: { 'Content-Type': 'application/json' },
-              body: JSON.stringify({ name: p.name, description: p.desc, price: p.price, imageUrl: p.emoji })
-            });
+      let products = [];
+      let cart = JSON.parse(localStorage.getItem('bf_cart')) || [];
+      let currentUser = JSON.parse(localStorage.getItem('bf_user')) || null;
+      let orders = JSON.parse(localStorage.getItem('bf_orders')) || [];
+      let quantities = {};
+
+      // Fetch on load
+      document.addEventListener('DOMContentLoaded', fetchBrownies);
+
+      async function fetchBrownies() {
+        try {
+          const res = await fetch(`${API_BASE}/Brownies`);
+          if (res.status === 401) {
+            showToast('⚠️ Backend Access Denied (401)', 'error');
+            throw new Error('401 Unauthorized');
           }
-          // Re-fetch seeded data
-          const newRes = await fetch(`${API_BASE}/Brownies`);
-          const newData = await newRes.json();
-          products = newData.map(b => ({
-            id: b.id, name: b.name, desc: b.description, price: b.price, emoji: MAP_IMAGE[b.name] || b.imageUrl || '🍫', available: true
-          }));
+          if (!res.ok) throw new Error('API down');
+          const data = await res.json();
+
+          if (data && data.length > 0) {
+            products = data.map(b => ({
+              id: b.id, name: b.name, desc: b.description, price: b.price, emoji: MAP_IMAGE[b.name] || b.imageUrl || '🍫', available: true
+            }));
+          } else {
+            // Auto-seed database if empty
+            for (const p of DEFAULT_PRODUCTS) {
+              await fetch(`${API_BASE}/Brownies`, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ name: p.name, description: p.desc, price: p.price, imageUrl: p.emoji })
+              });
+            }
+            // Re-fetch seeded data
+            const newRes = await fetch(`${API_BASE}/Brownies`);
+            const newData = await newRes.json();
+            products = newData.map(b => ({
+              id: b.id, name: b.name, desc: b.description, price: b.price, emoji: MAP_IMAGE[b.name] || b.imageUrl || '🍫', available: true
+            }));
+          }
+          renderMenu();
+        } catch (e) {
+          console.error('Failed to fetch from API, falling back to locals:', e);
+          showToast('⚠️ Using local fallback (Backend disconnected)', 'error');
+          products = DEFAULT_PRODUCTS;
+          renderMenu();
         }
-        renderMenu();
-      } catch (e) {
-        console.error('Failed to fetch from API, falling back to locals:', e);
-        showToast('⚠️ Using local fallback (Backend disconnected)', 'error');
-        products = DEFAULT_PRODUCTS;
-        renderMenu();
+        await fetchCart();
       }
-      await fetchCart();
-    }
 
-    async function fetchCart() {
-      if (!currentUser) {
-        cart = [];
-        return;
-      }
-      try {
-        const res = await fetch(`${API_BASE}/Cart/${currentUser.id}`);
-        if (res.ok) {
-          cart = await res.json();
-          updateCartBadge();
+      async function fetchCart() {
+        if (!currentUser) {
+          cart = [];
+          return;
         }
-      } catch (e) {
-        console.error('Failed to fetch cart', e);
-      }
-    }
-
-    // ─── SAVE ─────────────────────────────────────────────────
-    function save() {
-      // Note: products are now fetched dynamically, so no need to save products to localStorage.
-      localStorage.setItem('bf_cart', JSON.stringify(cart));
-      if (currentUser) localStorage.setItem('bf_user', JSON.stringify(currentUser));
-      localStorage.setItem('bf_orders', JSON.stringify(orders));
-    }
-
-    // ─── THREE.JS 3D BROWNIE ──────────────────────────────────
-    function init3D() {
-      const canvas = document.getElementById('three-canvas');
-      const wrap = document.getElementById('heroWrap');
-      if (!wrap || !canvas) return;
-      const w = wrap.offsetWidth, h = wrap.offsetHeight;
-      const renderer = new THREE.WebGLRenderer({ canvas, alpha: true, antialias: true });
-      renderer.setSize(w, h);
-      renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
-
-      const scene = new THREE.Scene();
-      const camera = new THREE.PerspectiveCamera(45, w / h, 0.1, 100);
-      camera.position.set(0, 0, 5);
-
-      // Lighting
-      const ambient = new THREE.AmbientLight(0xfff0e0, 0.8);
-      scene.add(ambient);
-      const dirLight = new THREE.DirectionalLight(0xffd49a, 1.5);
-      dirLight.position.set(3, 5, 3);
-      scene.add(dirLight);
-      const rimLight = new THREE.DirectionalLight(0xC8873A, 0.5);
-      rimLight.position.set(-3, -2, 1);
-      scene.add(rimLight);
-
-      // Brownie box geometry (rounded box)
-      const geo = new THREE.BoxGeometry(2.2, 0.6, 2.2, 4, 2, 4);
-      const mat = new THREE.MeshStandardMaterial({ color: 0x2C1810, roughness: 0.7, metalness: 0.05 });
-      const brownie = new THREE.Mesh(geo, mat);
-      scene.add(brownie);
-
-      // Top face gloss
-      const topGeo = new THREE.PlaneGeometry(2.1, 2.1);
-      const topMat = new THREE.MeshStandardMaterial({ color: 0x3D1F10, roughness: 0.4, metalness: 0.1 });
-      const top = new THREE.Mesh(topGeo, topMat);
-      top.rotation.x = -Math.PI / 2;
-      top.position.y = 0.31;
-      scene.add(top);
-
-      // Choco chips (small spheres)
-      const chipGeo = new THREE.SphereGeometry(0.08, 8, 8);
-      const chipMat = new THREE.MeshStandardMaterial({ color: 0x1A0A05, roughness: 0.5 });
-      const chipPositions = [[-0.5, 0.32, -0.4], [0.3, 0.32, 0.2], [0.6, 0.32, -0.6], [-0.7, 0.32, 0.5], [0.0, 0.32, 0.6], [-0.2, 0.32, -0.1], [0.7, 0.32, 0.5], [-0.4, 0.32, 0.0]];
-      chipPositions.forEach(p => {
-        const chip = new THREE.Mesh(chipGeo, chipMat);
-        chip.position.set(...p);
-        scene.add(chip);
-      });
-
-      // Chocolate drizzle lines (thin cylinders)
-      for (let i = 0; i < 4; i++) {
-        const dGeo = new THREE.CylinderGeometry(0.015, 0.015, 2, 6);
-        const dMat = new THREE.MeshStandardMaterial({ color: 0xC8873A, roughness: 0.3 });
-        const drizzle = new THREE.Mesh(dGeo, dMat);
-        drizzle.rotation.x = Math.PI / 2;
-        drizzle.rotation.z = (Math.random() - 0.5) * 0.4;
-        drizzle.position.set((Math.random() - 0.5) * 1.4, 0.32 + i * 0.01, (Math.random() - 0.5) * 0.4);
-        drizzle.scale.y = 0.8 + Math.random() * 0.4;
-        scene.add(drizzle);
+        try {
+          const res = await fetch(`${API_BASE}/Cart/${currentUser.id}`);
+          if (res.ok) {
+            cart = await res.json();
+            updateCartBadge();
+          }
+        } catch (e) {
+          console.error('Failed to fetch cart', e);
+        }
       }
 
-      // Floating particles
-      const partGeo = new THREE.SphereGeometry(0.04, 6, 6);
-      const partMat = new THREE.MeshStandardMaterial({ color: 0xD4A853, roughness: 0.8 });
-      const parts = [];
-      for (let i = 0; i < 20; i++) {
-        const p = new THREE.Mesh(partGeo, partMat);
-        p.position.set((Math.random() - 0.5) * 4, (Math.random() - 0.5) * 3, (Math.random() - 0.5) * 2 - 1);
-        p._speed = 0.005 + Math.random() * 0.01;
-        p._offset = Math.random() * Math.PI * 2;
-        scene.add(p);
-        parts.push(p);
+      // ─── SAVE ─────────────────────────────────────────────────
+      function save() {
+        // Note: products are now fetched dynamically, so no need to save products to localStorage.
+        localStorage.setItem('bf_cart', JSON.stringify(cart));
+        if (currentUser) localStorage.setItem('bf_user', JSON.stringify(currentUser));
+        localStorage.setItem('bf_orders', JSON.stringify(orders));
       }
 
-      let mx = 0, my = 0;
-      document.addEventListener('mousemove', e => {
-        mx = (e.clientX / window.innerWidth - 0.5) * 2;
-        my = -(e.clientY / window.innerHeight - 0.5) * 2;
-      });
+      // ─── THREE.JS 3D BROWNIE ──────────────────────────────────
+      function init3D() {
+        const canvas = document.getElementById('three-canvas');
+        const wrap = document.getElementById('heroWrap');
+        if (!wrap || !canvas) return;
+        const w = wrap.offsetWidth, h = wrap.offsetHeight;
+        const renderer = new THREE.WebGLRenderer({ canvas, alpha: true, antialias: true });
+        renderer.setSize(w, h);
+        renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
 
-      let t = 0;
-      function animate() {
-        requestAnimationFrame(animate);
-        t += 0.01;
-        brownie.rotation.y = mx * 0.3 + Math.sin(t * 0.5) * 0.15;
-        brownie.rotation.x = my * 0.15 + Math.sin(t * 0.3) * 0.05;
-        top.rotation.y = brownie.rotation.y;
+        const scene = new THREE.Scene();
+        const camera = new THREE.PerspectiveCamera(45, w / h, 0.1, 100);
+        camera.position.set(0, 0, 5);
+
+        // Lighting
+        const ambient = new THREE.AmbientLight(0xfff0e0, 0.8);
+        scene.add(ambient);
+        const dirLight = new THREE.DirectionalLight(0xffd49a, 1.5);
+        dirLight.position.set(3, 5, 3);
+        scene.add(dirLight);
+        const rimLight = new THREE.DirectionalLight(0xC8873A, 0.5);
+        rimLight.position.set(-3, -2, 1);
+        scene.add(rimLight);
+
+        // Brownie box geometry (rounded box)
+        const geo = new THREE.BoxGeometry(2.2, 0.6, 2.2, 4, 2, 4);
+        const mat = new THREE.MeshStandardMaterial({ color: 0x2C1810, roughness: 0.7, metalness: 0.05 });
+        const brownie = new THREE.Mesh(geo, mat);
+        scene.add(brownie);
+
+        // Top face gloss
+        const topGeo = new THREE.PlaneGeometry(2.1, 2.1);
+        const topMat = new THREE.MeshStandardMaterial({ color: 0x3D1F10, roughness: 0.4, metalness: 0.1 });
+        const top = new THREE.Mesh(topGeo, topMat);
         top.rotation.x = -Math.PI / 2;
-        parts.forEach(p => {
-          p.position.y += Math.sin(t + p._offset) * p._speed;
-          p.rotation.x += 0.01;
-        });
-        renderer.render(scene, camera);
-      }
-      animate();
-    }
+        top.position.y = 0.31;
+        scene.add(top);
 
-    // ─── NAV UPDATE ───────────────────────────────────────────
-    function updateNav() {
-      const actions = document.getElementById('navActions');
-      if (currentUser) {
-        const initials = (currentUser.firstName[0] + (currentUser.lastName || '')[0] || '').toUpperCase();
-        actions.innerHTML = `
+        // Choco chips (small spheres)
+        const chipGeo = new THREE.SphereGeometry(0.08, 8, 8);
+        const chipMat = new THREE.MeshStandardMaterial({ color: 0x1A0A05, roughness: 0.5 });
+        const chipPositions = [[-0.5, 0.32, -0.4], [0.3, 0.32, 0.2], [0.6, 0.32, -0.6], [-0.7, 0.32, 0.5], [0.0, 0.32, 0.6], [-0.2, 0.32, -0.1], [0.7, 0.32, 0.5], [-0.4, 0.32, 0.0]];
+        chipPositions.forEach(p => {
+          const chip = new THREE.Mesh(chipGeo, chipMat);
+          chip.position.set(...p);
+          scene.add(chip);
+        });
+
+        // Chocolate drizzle lines (thin cylinders)
+        for (let i = 0; i < 4; i++) {
+          const dGeo = new THREE.CylinderGeometry(0.015, 0.015, 2, 6);
+          const dMat = new THREE.MeshStandardMaterial({ color: 0xC8873A, roughness: 0.3 });
+          const drizzle = new THREE.Mesh(dGeo, dMat);
+          drizzle.rotation.x = Math.PI / 2;
+          drizzle.rotation.z = (Math.random() - 0.5) * 0.4;
+          drizzle.position.set((Math.random() - 0.5) * 1.4, 0.32 + i * 0.01, (Math.random() - 0.5) * 0.4);
+          drizzle.scale.y = 0.8 + Math.random() * 0.4;
+          scene.add(drizzle);
+        }
+
+        // Floating particles
+        const partGeo = new THREE.SphereGeometry(0.04, 6, 6);
+        const partMat = new THREE.MeshStandardMaterial({ color: 0xD4A853, roughness: 0.8 });
+        const parts = [];
+        for (let i = 0; i < 20; i++) {
+          const p = new THREE.Mesh(partGeo, partMat);
+          p.position.set((Math.random() - 0.5) * 4, (Math.random() - 0.5) * 3, (Math.random() - 0.5) * 2 - 1);
+          p._speed = 0.005 + Math.random() * 0.01;
+          p._offset = Math.random() * Math.PI * 2;
+          scene.add(p);
+          parts.push(p);
+        }
+
+        let mx = 0, my = 0;
+        document.addEventListener('mousemove', e => {
+          mx = (e.clientX / window.innerWidth - 0.5) * 2;
+          my = -(e.clientY / window.innerHeight - 0.5) * 2;
+        });
+
+        let t = 0;
+        function animate() {
+          requestAnimationFrame(animate);
+          t += 0.01;
+          brownie.rotation.y = mx * 0.3 + Math.sin(t * 0.5) * 0.15;
+          brownie.rotation.x = my * 0.15 + Math.sin(t * 0.3) * 0.05;
+          top.rotation.y = brownie.rotation.y;
+          top.rotation.x = -Math.PI / 2;
+          parts.forEach(p => {
+            p.position.y += Math.sin(t + p._offset) * p._speed;
+            p.rotation.x += 0.01;
+          });
+          renderer.render(scene, camera);
+        }
+        animate();
+      }
+
+      // ─── NAV UPDATE ───────────────────────────────────────────
+      function updateNav() {
+        const actions = document.getElementById('navActions');
+        if (currentUser) {
+          const initials = (currentUser.firstName[0] + (currentUser.lastName || '')[0] || '').toUpperCase();
+          actions.innerHTML = `
       <button class="cart-btn" onclick="openCart()">
         🛒 Cart
         <span class="cart-badge" id="cartBadge">${cart.length}</span>
@@ -1951,34 +1955,34 @@
         <div class="profile-avatar">${initials}</div>
         ${currentUser.firstName}
       </button>`;
-        updateCartBadge();
-      } else {
-        actions.innerHTML = `
+          updateCartBadge();
+        } else {
+          actions.innerHTML = `
       <button class="btn-nav btn-ghost" onclick="openAuth('login')">Login</button>
       <button class="btn-nav btn-solid" onclick="openAuth('signup')">Sign Up</button>`;
+        }
       }
-    }
 
-    function updateCartBadge() {
-      const badge = document.getElementById('cartBadge');
-      if (!badge) return;
-      const total = cart.reduce((s, i) => s + i.qty, 0);
-      badge.textContent = total;
-      badge.style.display = total > 0 ? 'flex' : 'none';
-    }
+      function updateCartBadge() {
+        const badge = document.getElementById('cartBadge');
+        if (!badge) return;
+        const total = cart.reduce((s, i) => s + i.qty, 0);
+        badge.textContent = total;
+        badge.style.display = total > 0 ? 'flex' : 'none';
+      }
 
-    // ─── MENU RENDER ──────────────────────────────────────────
-    function renderMenu() {
-      const grid = document.getElementById('menuGrid');
-      grid.innerHTML = products.map(p => {
-        const qty = quantities[p.id] || 1;
-        return `
+      // ─── MENU RENDER ──────────────────────────────────────────
+      function renderMenu() {
+        const grid = document.getElementById('menuGrid');
+        grid.innerHTML = products.map(p => {
+          const qty = quantities[p.id] || 1;
+          return `
     <div class="product-card${p.available ? '' : ' sold-out'}" id="card-${p.id}">
       <div class="product-img">
         ${getEmojiHtml(p.emoji, 'prod-pic')}
         ${p.available
-            ? `<span class="avail-badge">Available</span>`
-            : `<span class="sold-badge">Sold Out</span>`}
+              ? `<span class="avail-badge">Available</span>`
+              : `<span class="sold-badge">Sold Out</span>`}
       </div>
       <div class="product-body">
         <div class="product-name">${p.name}</div>
@@ -1999,84 +2003,84 @@
         </div>
       </div>
     </div>`}).join('');
-    }
-
-    function changeQty(id, delta) {
-      const current = quantities[id] || 1;
-      quantities[id] = Math.min(10, Math.max(1, current + delta));
-      const el = document.getElementById(`qty-${id}`);
-      if (el) el.textContent = quantities[id];
-    }
-
-    // ─── CART ─────────────────────────────────────────────────
-    async function addToCart(id) {
-      if (!currentUser) { showToast('Please login first 👆', 'error'); openAuth('login'); return; }
-      const prod = products.find(p => p.id === id);
-      if (!prod || !prod.available) return;
-      const qty = quantities[id] || 1;
-      const existing = cart.find(i => i.id === id);
-      let newQty = qty;
-      if (existing) {
-        newQty = Math.min(10, existing.qty + qty);
-      }
-      
-      try {
-        const res = await fetch(`${API_BASE}/Cart`, {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ userId: currentUser.id, brownieId: id, quantity: newQty })
-        });
-        if (!res.ok) throw new Error('API saving failed');
-      } catch (e) {
-         showToast('Failed to save to server!', 'error');
-         return;
       }
 
-      if (existing) {
-        existing.qty = newQty;
-      } else {
-        cart.push({ id, name: prod.name, emoji: prod.emoji, price: prod.price, qty: newQty });
+      function changeQty(id, delta) {
+        const current = quantities[id] || 1;
+        quantities[id] = Math.min(10, Math.max(1, current + delta));
+        const el = document.getElementById(`qty-${id}`);
+        if (el) el.textContent = quantities[id];
       }
-      
-      save(); updateCartBadge();
-      showToast(`🍫 ${prod.name} added to cart!`, 'success');
-    }
 
-    function buyNow(id) {
-      if (!currentUser) { showToast('Please login first 👆', 'error'); openAuth('login'); return; }
-      const prod = products.find(p => p.id === id);
-      if (!prod || !prod.available) return;
-      const qty = quantities[id] || 1;
-      openCheckout([{ id, name: prod.name, emoji: prod.emoji, price: prod.price, qty }]);
-    }
+      // ─── CART ─────────────────────────────────────────────────
+      async function addToCart(id) {
+        if (!currentUser) { showToast('Please login first 👆', 'error'); openAuth('login'); return; }
+        const prod = products.find(p => p.id === id);
+        if (!prod || !prod.available) return;
+        const qty = quantities[id] || 1;
+        const existing = cart.find(i => i.id === id);
+        let newQty = qty;
+        if (existing) {
+          newQty = Math.min(10, existing.qty + qty);
+        }
 
-    async function removeFromCart(id) {
-      if (currentUser) {
         try {
-          await fetch(`${API_BASE}/Cart/${currentUser.id}/${id}`, { method: 'DELETE' });
-        } catch(e) {}
+          const res = await fetch(`${API_BASE}/Cart`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ userId: currentUser.id, brownieId: id, quantity: newQty })
+          });
+          if (!res.ok) throw new Error('API saving failed');
+        } catch (e) {
+          showToast('Failed to save to server!', 'error');
+          return;
+        }
+
+        if (existing) {
+          existing.qty = newQty;
+        } else {
+          cart.push({ id, name: prod.name, emoji: prod.emoji, price: prod.price, qty: newQty });
+        }
+
+        save(); updateCartBadge();
+        showToast(`🍫 ${prod.name} added to cart!`, 'success');
       }
-      cart = cart.filter(i => i.id !== id);
-      save(); updateCartBadge(); renderCart();
-    }
 
-    function cartTotal() { return cart.reduce((s, i) => s + i.price * i.qty, 0); }
-
-    // ─── OPEN CART ────────────────────────────────────────────
-    function openCart() {
-      document.getElementById('cartModal').classList.add('active');
-      renderCart();
-    }
-
-    function renderCart() {
-      const content = document.getElementById('cartContent');
-      if (cart.length === 0) {
-        content.innerHTML = `<div class="empty-cart"><div class="empty-cart-emoji">🛒</div><p>Your cart is empty</p></div>`;
-        return;
+      function buyNow(id) {
+        if (!currentUser) { showToast('Please login first 👆', 'error'); openAuth('login'); return; }
+        const prod = products.find(p => p.id === id);
+        if (!prod || !prod.available) return;
+        const qty = quantities[id] || 1;
+        openCheckout([{ id, name: prod.name, emoji: prod.emoji, price: prod.price, qty }]);
       }
-      const total = cartTotal();
-      const delivery = 30;
-      content.innerHTML = `
+
+      async function removeFromCart(id) {
+        if (currentUser) {
+          try {
+            await fetch(`${API_BASE}/Cart/${currentUser.id}/${id}`, { method: 'DELETE' });
+          } catch (e) { }
+        }
+        cart = cart.filter(i => i.id !== id);
+        save(); updateCartBadge(); renderCart();
+      }
+
+      function cartTotal() { return cart.reduce((s, i) => s + i.price * i.qty, 0); }
+
+      // ─── OPEN CART ────────────────────────────────────────────
+      function openCart() {
+        document.getElementById('cartModal').classList.add('active');
+        renderCart();
+      }
+
+      function renderCart() {
+        const content = document.getElementById('cartContent');
+        if (cart.length === 0) {
+          content.innerHTML = `<div class="empty-cart"><div class="empty-cart-emoji">🛒</div><p>Your cart is empty</p></div>`;
+          return;
+        }
+        const total = cartTotal();
+        const delivery = 30;
+        content.innerHTML = `
     <div class="cart-items">
       ${cart.map(i => `
         <div class="cart-item">
@@ -2095,15 +2099,15 @@
       <div class="cart-total"><span>Total</span><span>₹${total + delivery}</span></div>
     </div>
     <button class="btn-full btn-brown" style="margin-top:20px;" onclick="closeModal('cartModal');openCheckout(cart)">Proceed to Checkout →</button>`;
-    }
+      }
 
-    // ─── CHECKOUT ─────────────────────────────────────────────
-    function openCheckout(items) {
-      const total = items.reduce((s, i) => s + i.price * i.qty, 0);
-      const delivery = 30;
-      const grand = total + delivery;
-      document.getElementById('checkoutModal').classList.add('active');
-      document.getElementById('checkoutContent').innerHTML = `
+      // ─── CHECKOUT ─────────────────────────────────────────────
+      function openCheckout(items) {
+        const total = items.reduce((s, i) => s + i.price * i.qty, 0);
+        const delivery = 30;
+        const grand = total + delivery;
+        document.getElementById('checkoutModal').classList.add('active');
+        document.getElementById('checkoutContent').innerHTML = `
     <div class="steps">
       <div class="step done"></div>
       <div class="step active"></div>
@@ -2154,49 +2158,49 @@
       </div>
     </div>
     <button class="btn-full btn-brown" onclick="placeOrder(${JSON.stringify(items).replace(/"/g, "'")},${grand})">Place Order →</button>`;
-    }
+      }
 
-    function selectPay(el) {
-      document.querySelectorAll('.pay-opt').forEach(o => o.classList.remove('selected'));
-      el.classList.add('selected');
-    }
+      function selectPay(el) {
+        document.querySelectorAll('.pay-opt').forEach(o => o.classList.remove('selected'));
+        el.classList.add('selected');
+      }
 
-    // ─── RAZORPAY INTEGRATION ─────────────────────────────────
-    async function placeOrder(items, amount) {
-      const name = document.getElementById('chkName')?.value;
-      const phone = document.getElementById('chkPhone')?.value;
-      const addr = document.getElementById('chkAddr')?.value;
-      if (!name || !phone || !addr) { showToast('Please fill all fields ⚠️', 'error'); return; }
+      // ─── RAZORPAY INTEGRATION ─────────────────────────────────
+      async function placeOrder(items, amount) {
+        const name = document.getElementById('chkName')?.value;
+        const phone = document.getElementById('chkPhone')?.value;
+        const addr = document.getElementById('chkAddr')?.value;
+        if (!name || !phone || !addr) { showToast('Please fill all fields ⚠️', 'error'); return; }
 
-      const payMethod = document.querySelector('input[name="pay"]:checked')?.value;
+        const payMethod = document.querySelector('input[name="pay"]:checked')?.value;
 
-      // 1. Create order in Backend SQL
-      document.getElementById('checkoutContent').innerHTML = `
+        // 1. Create order in Backend SQL
+        document.getElementById('checkoutContent').innerHTML = `
     <div class="pay-loading">
       <div class="pay-spinner"></div>
       <p style="color:var(--brown);font-weight:600;font-size:16px;">Creating official order...</p>
     </div>`;
 
-      let localOrderId;
-      try {
-        const orderRes = await fetch(`${API_BASE}/Orders`, {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({
-            customerName: name,
+        let localOrderId;
+        try {
+          const orderRes = await fetch(`${API_BASE}/Orders`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              customerName: name,
               email: currentUser ? currentUser.email : 'furtheen23@gmail.com',
-      <div>₹${p.price}</div>
-      <span class="admin-card-status ${p.available ? 'on' : 'off'}" id="status-${p.id}">${p.available ? 'Available' : 'Sold Out'}</span>
-    </div>`).join('');
+      < div >₹${ p.price }</div >
+            <span class="admin-card-status ${p.available ? 'on' : 'off'}" id="status-${p.id}">${p.available ? 'Available' : 'Sold Out'}</span>
+    </div > `).join('');
 
       // Orders
       const list = document.getElementById('ordersList');
       if (orders.length === 0) {
-        list.innerHTML = `<p style="color:var(--muted);font-size:14px;">No orders yet. Share your shop link!</p>`;
+        list.innerHTML = `< p style = "color:var(--muted);font-size:14px;" > No orders yet.Share your shop link!</p > `;
         return;
       }
       list.innerHTML = orders.map(o => `
-    <div class="order-card">
+            < div class="order-card" >
       <div>
         <div class="order-id">#${o.id}</div>
         <div class="order-customer">${o.customer}</div>
@@ -2210,7 +2214,7 @@
           <a href="https://wa.me/91${o.phone.replace(/\D/g, '')}" target="_blank" style="font-size:12px;color:#25D366;text-decoration:none;font-weight:600;">📲 WhatsApp</a>
         </div>
       </div>
-    </div>`).join('');
+    </div > `).join('');
     }
 
     function toggleItem(id, val) {
@@ -2218,10 +2222,10 @@
       if (prod) {
         prod.available = val;
         save();
-        const status = document.getElementById(`status-${id}`);
-        if (status) { status.textContent = val ? 'Available' : 'Sold Out'; status.className = `admin-card-status ${val ? 'on' : 'off'}`; }
+        const status = document.getElementById(`status - ${ id } `);
+        if (status) { status.textContent = val ? 'Available' : 'Sold Out'; status.className = `admin - card - status ${ val ? 'on' : 'off' } `; }
         renderMenu();
-        showToast(`${prod.name} marked as ${val ? 'Available ✅' : 'Sold Out ❌'}`);
+        showToast(`${ prod.name } marked as ${ val ? 'Available ✅' : 'Sold Out ❌' }`);
       }
     }
 
@@ -2254,7 +2258,7 @@
       renderMenu();
       init3D();
     });
-  </script>
-</body>
+    </script>
+  </body>
 
 </html>
